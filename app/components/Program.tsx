@@ -2,47 +2,18 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const items = [
-    {
-        image: "/program1.jpg",
-        title: "Play School",
-        description: "Our Playschool is designed to provide a fun and engaging environment where children can develop crucial skills while enjoying the process."
-    },
-    {
-        image: "/program2.jpg",
-        title: "SPED Tutorial",
-        description: "Our SPED Program is designed to cater to the unique needs of each child, ensuring they are well-prepared for big school."
-    },
-    {
-        image: "/program3.jpg",
-        title: "Center-based homeschooling Program",
-        description: "Our Home School program are designed to meet all academic standards and grade level requirements, ensuring that every child receives a comprehensive education that is both personalized and adaptable."
-    },
-    {
-        image: "/program4.jpg",
-        title: "After-School Program",
-        description: "Our After-School Academic Tutorial Program is designed to provide comprehensive assistance and enrichment, ensuring students excel in their academic endeavors."
-    },
-    {
-        image: "/program5.jpg",
-        title: "Early Intervention",
-        description: "Our Early Intervention Program aims to address developmental challenges at an early stage, providing targeted support to enhance the child's abilities and prepare them for future learning."
-    },
-    {
-        image: "/program6.jpg",
-        title: "Specialized Programs",
-        description: "Our Specialized Programs are specially designed for children with autism, focusing on their unique needs to help them achieve functional communication and life skills."
-    },
-];
+import { items, rates } from "../utils/programs";
 
 export default function Program() {
     return (
-        <section className="py-28 bg-gradient-to-br from-orange-50 via-white to-amber-50 text-slate-800" id="program">
+        <section
+            className="py-28 bg-gradient-to-br from-orange-50 via-white to-amber-50 text-slate-800"
+            id="program"
+        >
             <div className="w-full max-w-7xl mx-auto text-center px-6">
 
                 {/* Section Title */}
-                <div className="mb-12">
+                <div className="mb-16">
                     <span className="inline-block px-4 py-2 text-sm bg-amber-100 text-amber-900 rounded-full border border-amber-200 mb-4">
                         Our Programs
                     </span>
@@ -57,18 +28,18 @@ export default function Program() {
                     </motion.h3>
                 </div>
 
-                {/* Grid of Features */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Program Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {items.map((item, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="group relative bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-1xl transition-shadow duration-500"
+                            className="group relative bg-white rounded-3xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-500 hover:scale-[1.02]"
                         >
                             {/* Image */}
-                            <div className="relative h-64 w-full overflow-hidden">
+                            <div className="relative h-64 w-full overflow-hidden rounded-t-3xl">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
@@ -79,8 +50,8 @@ export default function Program() {
                             </div>
 
                             {/* Content */}
-                            <div className="p-6 text-center">
-                                <h4 className="text-xl font-semibold mb-2 text-slate-800">
+                            <div className="p-8 text-center">
+                                <h4 className="text-xl font-semibold mb-3 text-slate-800">
                                     {item.title}
                                 </h4>
                                 <p className="text-sm text-slate-600 leading-relaxed">
@@ -90,6 +61,51 @@ export default function Program() {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Program Rates */}
+                <div className="mt-20">
+                    <h3 className="text-3xl font-bold mb-12 text-center text-slate-800">
+                        Program Rates
+                    </h3>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {rates.map((rate, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="bg-white border border-amber-100 rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col"
+                            >
+                                <h4 className="text-lg font-semibold mb-2 text-orange-600">
+                                    {rate.title}
+                                </h4>
+
+                                <p className="text-xl font-bold mb-4 text-slate-800">
+                                    {rate.price}
+                                </p>
+
+                                {rate.schedule && (
+                                    <ul className="text-sm text-slate-600 space-y-1 mb-4 list-disc list-inside">
+                                        {rate.schedule.map((item, i) => (
+                                            <li key={i}>{item}</li>
+                                        ))}
+                                    </ul>
+                                )}
+
+                                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                                    {rate.description}
+                                </p>
+
+                                <button className="mt-auto w-full py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium hover:opacity-90 transition">
+                                    Inquire Now
+                                </button>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
         </section>
     );

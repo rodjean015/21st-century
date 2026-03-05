@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import EnrollmentModal from "./EnrollmentForm";
 
 const navItems = [
