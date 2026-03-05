@@ -42,7 +42,7 @@ export default function Navbar() {
                 className={`fixed top-4 left-1/2 transform -translate-x-1/2 w-[92%] max-w-7xl z-50 transition-transform duration-300 ${visible ? "translate-y-0" : "-translate-y-24"
                     }`}
             >
-                <div className="rounded bg-gradient-to-r from-orange-50/70 via-white/50 to-amber-50/70 backdrop-blur-md border border-orange-100 shadow-lg">
+                <div className="rounded rounded-full bg-gradient-to-r from-orange-50/70 via-white/50 to-amber-50/70 backdrop-blur-md border border-orange-100 shadow-lg">
                     <div className="px-6 py-4 flex justify-between items-center">
 
                         {/* Logo */}
